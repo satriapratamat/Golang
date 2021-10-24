@@ -3,7 +3,9 @@ package main
 import "fmt"
 
 func swap(a, b *int) {
-
+	ubah := *a
+	*a = *b
+	*b = ubah
 }
 
 func main() {
@@ -14,6 +16,6 @@ func main() {
 
 	swap(&a, &b)
 
-	fmt.Println(a, b)
+	fmt.Println("Nilai a yang baru =", a, "dan nilai b yang baru =", b)
 
 }

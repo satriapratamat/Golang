@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type student struct {
 	name string
@@ -20,6 +23,19 @@ func (s *student) Encode() string {
 
 	var nameEncode = ""
 
+	Encoding := func(r rune) rune {
+
+		s := int(r) + 3
+		if s > 'z' {
+			return rune(s - 26)
+		} else if s < 'a' {
+			return rune(s + 26)
+		}
+		return rune(s)
+	}
+
+	nameEncode = strings.Map(Encoding, s.name)
+
 	// your code here
 
 	return nameEncode
@@ -29,6 +45,19 @@ func (s *student) Encode() string {
 func (s *student) Decode() string {
 
 	var nameDecode = ""
+
+	Decoding := func(r rune) rune {
+
+		s := int(r) - 3
+		if s > 'z' {
+			return rune(s - 26)
+		} else if s < 'a' {
+			return rune(s + 26)
+		}
+		return rune(s)
+	}
+
+	nameDecode = strings.Map(Decoding, s.nameEncode)
 
 	// your code here
 

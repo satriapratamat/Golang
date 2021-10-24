@@ -3,8 +3,23 @@ package main
 import "fmt"
 
 func caesar(offset int, input string) string {
-
-	// your code here
+	var inputRune = []rune(input)
+	var newRune []rune
+	if offset > 26 {
+		offset = offset % 26
+	}
+	for _, value := range inputRune {
+		// fmt.Println("value di line 16 = ", value)
+		newValue := int(value) + offset
+		// fmt.Println("newValue di line 14 = ", newValue)
+		if newValue > 122 {
+			// fmt.Println("newValue di line 16 = ", newValue)
+			newValue = (newValue % 122) + 96
+			// fmt.Println("newValue di line 18 = ", newValue)
+		}
+		newRune = append(newRune, rune(newValue))
+	}
+	return string(newRune)
 
 }
 

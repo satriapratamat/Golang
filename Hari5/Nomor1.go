@@ -2,11 +2,19 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func Compare(a, b string) string {
 
-	// your code here
+	if strings.Contains(b, a) {
+		return a
+	}
+	if strings.Contains(a, b) {
+		return b
+	} else {
+		return "Kalimat a tidak mengandung kalimat b atau sebaliknya"
+	}
 
 }
 
