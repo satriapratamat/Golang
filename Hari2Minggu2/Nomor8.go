@@ -14,7 +14,6 @@ func MostAppearItem(items []string) map[string]int {
 			item[items[i]] = 1
 		}
 	}
-
 	return item
 }
 
