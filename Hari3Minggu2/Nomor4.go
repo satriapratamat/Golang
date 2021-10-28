@@ -1,9 +1,38 @@
 package main
 
+import "fmt"
+
 func BinarySearch(array []int, x int) {
 
-	// your code here
+	low, high := 0, len(array)-1
 
+	if x > array[len(array)-1] || x < array[0] {
+		fmt.Println(-1)
+		return
+	}
+	if array[low] == x {
+		fmt.Println(low)
+		return
+	}
+	if array[high] == x {
+		fmt.Println(high)
+		return
+	} else {
+		for low+1 != high {
+			if array[(low+high)/2] < x {
+				low = (low + high) / 2
+			}
+			if array[(low+high)/2] == x {
+				fmt.Println((low + high) / 2)
+				return
+			} else {
+				high = (low + high) / 2
+			}
+		}
+	}
+
+	fmt.Println(-1)
+	return
 }
 
 func main() {

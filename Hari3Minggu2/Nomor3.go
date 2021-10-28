@@ -1,9 +1,30 @@
 package main
 
-func DragonOfLoowater(dragonHead, knightHeight []int) {
+import (
+	"fmt"
+	"sort"
+)
 
-	// your code here
+func DragonOfLoowater(dragonHead, knightHead []int) {
+	sort.Ints(dragonHead)
+	sort.Ints(knightHead)
 
+	var count int
+	output := 0
+	for count < len(dragonHead) {
+		for i := 0; i < len(knightHead); i++ {
+			if knightHead[i] >= dragonHead[count] {
+				output += knightHead[i]
+				count++
+				break
+			}
+			if i == len(knightHead)-1 && i != len(dragonHead) {
+				fmt.Println("knight fall")
+				return
+			}
+		}
+	}
+	fmt.Println(output)
 }
 
 func main() {
