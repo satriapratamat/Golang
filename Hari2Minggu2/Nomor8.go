@@ -2,41 +2,20 @@ package main
 
 import (
 	"fmt"
-	"sort"
-	"strconv"
 )
 
-type pair interface{}
-type p struct {
-	Key   string
-	Value int
-}
+func MostAppearItem(items []string) map[string]int {
+	item := map[string]int{}
 
-func DuplicateCount(list []string) map[string]int {
-	countDup := make(map[string]int)
-	for _, item := range list {
-		_, exist := countDup[item]
-		if exist {
-			countDup[item] += 1 //
+	for i := 0; i < len(items); i++ {
+		if _, ok := item[items[i]]; ok {
+			item[items[i]]++
 		} else {
-			countDup[item] = 1 //
+			item[items[i]] = 1
 		}
 	}
-	return countDup
-}
 
-func MostAppearItem(items []string) []pair {
-	dupMap := DuplicateCount(items)
-	var item []p
-	for k, v := range dupMap {
-		item = append(item, p{Key: k, Value: v})
-	}
-	sort.Strings(items)
-	var output []pair
-	for _, v := range item {
-		output = append(output, v.Key+"->"+strconv.Itoa(v.Value))
-	}
-	return output
+	return item
 }
 
 func main() {
